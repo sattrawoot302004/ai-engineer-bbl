@@ -43,6 +43,20 @@ def search_knowledge_base(
         descending=True,
     )[:top_k]
 
+    # print("\n[TOOL] Retrieval scores:")
+
+    # for rank, index in enumerate(
+    #     ranked_indices,
+    #     start=1,
+    # ):
+    #     score = similarities[index].item()
+
+    #     print(
+    #         f"{rank}. score={score:.4f}"
+    #     )
+    #     print(chunks[index])
+    #     print()
+
     return "\n\n---\n\n".join(
     chunks[index]
     for index in ranked_indices
