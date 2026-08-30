@@ -1,3 +1,4 @@
+from agents import function_tool
 from sentence_transformers import SentenceTransformer
 
 embedding_model = SentenceTransformer(
@@ -18,12 +19,19 @@ chunks = [
 ]
 
 # print (chunks)
+
 chunk_embeddings = embedding_model.encode(chunks)
 
+@function_tool
 def search_knowledge_base(
     query: str,
-    top_k: int = 3,
-) -> list[str]:
+  # top_k: int = 3
+) -> str:
+    top_k = 3
+
+    print(f"\n[TOOL] query = {query}")
+    print(f"[TOOL] top_k = {top_k}")
+
     query_embedding = embedding_model.encode(query)
 
     similarities = embedding_model.similarity(
@@ -35,7 +43,7 @@ def search_knowledge_base(
         descending=True,
     )[:top_k]
 
-    return [
-        chunks[index]
-        for index in ranked_indices
-    ]
+    return "\n\n---\n\n".join(
+    chunks[index]
+    for index in ranked_indices
+    )
