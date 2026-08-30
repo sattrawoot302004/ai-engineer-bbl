@@ -20,5 +20,5 @@ data_retriever = Agent(
     tools=[
         search_knowledge_base,
     ],
-    tool_use_behavior="stop_on_first_tool",
+   tool_use_behavior="stop_on_first_tool",
 )
