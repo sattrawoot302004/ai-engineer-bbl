@@ -29,7 +29,7 @@ def search_knowledge_base(
 ) -> str:
     top_k = 3
 
-    print(f"\n[TOOL] query = {query}")
+    #print(f"\n[TOOL] query = {query}")
     print(f"[TOOL] top_k = {top_k}")
 
     query_embedding = embedding_model.encode(query)
